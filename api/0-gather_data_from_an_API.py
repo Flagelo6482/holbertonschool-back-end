@@ -7,13 +7,14 @@ import sys
 
 
 def main():
-    #URL de la REST API
+    ##URL de la REST API
     BASE_URL = 'https://jsonplaceholder.typicode.com'
 
     #ID de empleados
     empoleye = int(sys.argv[1])
 
-    #Hacemos la solicitud GET al punto final '/todos' para obtener la lista TODO para el empleado dado
+    #Hacemos la solicitud GET al punto final '/todos' para obtener la lista
+    #TODO para el empleado dado
     response = requests.get(f'{BASE_URL}/todos?userId={empoleye}')
 
     #Analizamos la respuesta JSON y contamos la cantidad de tareas completadas
@@ -28,7 +29,8 @@ def main():
     empoleye_name = user_data['name']
 
     #Imprimimos la información de la lista
-    print(f"Employee {empoleye_name} is donde with tasks ({num_tasks_completed}/{num_tasks}):")
+    print(f"Employee {empoleye_name} is donde with tasks \
+           ({num_tasks_completed}/{num_tasks}):")
 
     for todo in tasks_completed:
         print(f'\t {todo["title"]}')
