@@ -1,9 +1,8 @@
 #!/usr/bin/python3
 """Export to JSON"""
-import csv
+import json
 import requests
 from sys import argv
-import json
 
 
 if __name__ == '__main__':
