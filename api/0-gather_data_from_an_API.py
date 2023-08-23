@@ -4,7 +4,7 @@ import requests
 import sys
 
 
-def main():
+if __name__ == '__main__':
     # URL de la REST API
     BASE_URL = 'https://jsonplaceholder.typicode.com'
 
@@ -32,7 +32,3 @@ def main():
 
     for todo in tasks_completed:
         print(f'\t {todo["title"]}')
-
-
-if __name__ == '__main__':
-    main()
