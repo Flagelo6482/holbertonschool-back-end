@@ -17,7 +17,7 @@ def main():
 
     # Obtenemos cada valor con 'get'
     for t in todo.json():
-        line = [f"{user.json().get('id')}"
+        line = [f"{user.json().get('id')}",
                 f"{user.json().get('username')}",
                 f"{t.get('completed')}",
                 f"{t.get('title')}"]
