@@ -19,8 +19,7 @@ def main():
         line = [f"{user.json().get('id')}"
                 f"{user.json().get('username')}",
                 f"{t.get('completed')}",
-                f"{t.get('title')}"
-        ]
+                f"{t.get('title')}"]
         lis.append(line)
 
     with open(f"{argv[1]}.csv", 'w') as file:
