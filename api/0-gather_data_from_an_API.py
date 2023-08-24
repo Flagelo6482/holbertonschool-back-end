@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     # Imprimimos la información de la lista
     print(f"Employee {empoleye_name} is donde with tasks \
-           ({num_tasks_completed}/{num_tasks}):")
+           ({num_tasks_completed}/{num_tasks}): ")
 
     for todo in tasks_completed:
         print(f'     {todo["title"]}')
