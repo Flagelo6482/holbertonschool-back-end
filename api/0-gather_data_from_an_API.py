@@ -1,34 +1,24 @@
 #!/usr/bin/python3
-"""Gather data from an API"""
+"""Python script that, using this REST API, for a given employee ID,
+returns information about his/her TODO list progress."""
 import requests
-import sys
+from sys import argv
 
 
-if __name__ == '__main__':
-    # URL de la REST API
-    BASE_URL = 'https://jsonplaceholder.typicode.com'
-
-    # ID de empleados
-    empoleye = int(sys.argv[1])
-
-    # Hacemos la solicitud GET al punto final '/todos' para obtener la lista
-    # TODO para el empleado dado
-    response = requests.get(f'{BASE_URL}/todos?userId={empoleye}')
-
-    # Analizamos la respuesta JSON y contamos la cantidad de tareas completadas
-    todos = response.json()
-    tasks_completed = [todo for todo in todos if todo['completed']]
-    num_tasks_completed = len(tasks_completed)
-    num_tasks = len(todos)
-
-    # Obtenemos el nombre del empleado del punto final '/users'
-    user_response = requests.get(f'{BASE_URL}/users/{empoleye}')
-    user_data = user_response.json()
-    empoleye_name = user_data['name']
-
-    # Imprimimos la información de la lista
-    print(f"Employee {empoleye_name} is donde with tasks \
-           ({num_tasks_completed}/{num_tasks}): ")
-
-    for todo in tasks_completed:
-        print(f'	 {todo["title"]}')
+if __name__ == "__main__":
+    user = f"https://jsonplaceholder.typicode.com/users/{argv[1]}"
+    todo = f"https://jsonplaceholder.typicode.com/users/{argv[1]}/todos"
+    us = requests.get(user)
+    to = requests.get(todo)
+    tr = []
+    for dicc in to.json():
+        for k, v in dicc.items():
+            if k == 'completed':
+                if v is True:
+                    tr.append(dicc)
+    print(f"Employee {us.json().get('name')} is \
+done with tasks({(len(tr))}/{(len(to.json()))}):")
+    for tittle in tr:
+        for k, v in tittle.items():
+            if k == 'title':
+                print(f'	 {v}')
